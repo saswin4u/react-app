@@ -3,6 +3,14 @@ module.exports = {
   output: {
     filename: 'public/bundle.js'
   },
+  stats: {
+      // Configure the console output
+      colors: true,
+      modules: true,
+      reasons: true
+  },
+  progress: true,
+  keepalive: true,
   module:{
     loaders:[
       {
