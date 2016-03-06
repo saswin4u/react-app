@@ -19,6 +19,7 @@
     "webpack": "^1.12.14"
   },
   "dependencies": {
+    "axios": "^0.9.1",
     "bootstrap": "^3.3.6",
     "firebase": "^2.4.1",
     "history": "^2.0.0",

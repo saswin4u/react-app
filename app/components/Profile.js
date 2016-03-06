@@ -7,25 +7,41 @@ var Repos = require('./GitHub/Repos');
 var UserProfile = require('./GitHub/UserProfile');
 var Notes = require('./Notes/Notes');
 
+var helpers = require('../utils/helpers');
+
 var Profile = React.createClass({
   mixins: [ReactFireMixin],
   getInitialState: function(){
     return {
       notes: [1,2,3],
-      bio: {
-        name: 'Sylvester'
-      },
+      bio: {},
       repos: ['a', 'b', 'c']
     }
   },
   componentDidMount: function(){
     //Will be called right after the component mounts the view
     this.ref = new Firebase('https://app-note-taker.firebaseio.com/');
-    var childRef = this.ref.child(this.props.params.username);
-    this.bindAsArray(childRef, 'notes');
+
+    this.init(this.props.params.username);
   },
   componentWillUNmount: function(){
     this.unbind('notes');
+  },
+  componentWillReceiveProps: function(nextProps){
+    this.unbind('notes');
+    this.init(nextProps.params.username);
+  },
+  init: function(username){
+    var childRef = this.ref.child(username);
+    this.bindAsArray(childRef, 'notes');
+
+    helpers.getGitHubInfo(username)
+      .then(function(data){
+        this.setState({
+          bio: data.bio,
+          repos: data.repos
+        })
+      }.bind(this));
   },
   handleAddNode: function(newNote){
     //update firebase with the newNote

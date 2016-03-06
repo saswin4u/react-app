@@ -13,7 +13,7 @@ var SearchGuthub = React.createClass({
     var username = this.usernameRef.value;
     this.usernameRef.value = '';
 
-    this.context.router.push({ pathname : "profile/" + username });
+    this.context.router.push({ pathname : "#/profile/" + username });
   },
   render: function(){
     return(
