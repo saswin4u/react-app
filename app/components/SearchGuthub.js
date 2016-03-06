@@ -1,34 +1,32 @@
-var React = require('react');
-var Router = require('react-router');
+import React from 'react';
+import { hashHistory } from 'react-router';
 
-var SearchGuthub = React.createClass({
-  mixins: [Router.router],
-  contextTypes: {
-    router: React.PropTypes.object.isRequired
-  },
-  getRef: function(ref){
+class SearchGuthub extends React.Component {
+  getRef(ref){
     this.usernameRef = ref;
-  },
-  handleSubmit: function(){
-    var username = this.usernameRef.value;
+  }
+
+  handleSubmit(){
+    const username = this.usernameRef.value;
     this.usernameRef.value = '';
 
-    this.context.router.push({ pathname : "#/profile/" + username });
-  },
-  render: function(){
+    hashHistory.push({ pathname : "/profile/" + username });
+  }
+
+  render(){
     return(
       <div className="col-sm-12">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={() => this.handleSubmit()}>
           <div className="form-group col-sm-7">
-            <input type="text" className="form-control" ref={this.getRef} />
+            <input type="text" className="form-control" ref={(ref) => this.getRef(ref)} />
           </div>
           <div className="form-group col-sm-5">
             <button type="submit" className="btn btn-block btn-primary">Search Github</button>
           </div>
         </form>
       </div>
-    );
+    )
   }
-});
+}
 
-module.exports = SearchGuthub;
+export default SearchGuthub;

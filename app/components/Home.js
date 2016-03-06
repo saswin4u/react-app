@@ -1,13 +1,13 @@
-var React = require('react');
+import React from 'react';
 
-var Home = React.createClass({
-  render: function(){
-    return(
-      <h2 className="text-center">
-        Search by Github Username Above
-      </h2>
-    );
-  }
-});
+//If the Component does not have any state and have only render method we can use this function instead of a class
 
-module.exports = Home;
+const Home = () => {
+  return(
+    <h2 className="text-center">
+      Search by Github Username Above
+    </h2>
+  )
+}
+
+export default Home;

@@ -1,24 +1,22 @@
-var React = require('react');
+import React from 'react';
 
-var SearchGuthub = require('./SearchGuthub');
+import SearchGuthub from './SearchGuthub';
 
-var Main = React.createClass({
-  render: function(){
-    return (
-      <div className="main-container">
-        <nav className="navbar navbar-default" role="navigation">
-          <div className="col-sm-7 col-sm-offset-2" style={{marginTop: '15px'}}>
-            <SearchGuthub />
-          </div>
-        </nav>
-        <div className="container">
-          {this.props.children}
+const Main = ({ children }) => {
+  return (
+    <div className="main-container">
+      <nav className="navbar navbar-default" role="navigation">
+        <div className="col-sm-7 col-sm-offset-2" style={{marginTop: '15px'}}>
+          <SearchGuthub />
         </div>
+      </nav>
+      <div className="container">
+        {children}
       </div>
-    );
-  }
-});
+    </div>
+  )
+}
 
-module.exports = Main;
+export default Main;
 
 // ReactDOM.render(<Main />, document.getElementById('app'));

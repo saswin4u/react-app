@@ -23,6 +23,7 @@
     "bootstrap": "^3.3.6",
     "firebase": "^2.4.1",
     "history": "^2.0.0",
+    "re-base": "^1.5.1",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-router": "^2.0.0",
