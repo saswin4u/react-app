@@ -21,7 +21,6 @@ class Profile extends React.Component {
 
   componentDidMount(){
     //Will be called right after the component mounts the view
-
     this.init(this.props.params.username);
   }
 
@@ -42,10 +41,10 @@ class Profile extends React.Component {
     });
 
     getGitHubInfo(username)
-      .then(function(data){
+      .then(function({bio, repos}){
         this.setState({
-          bio: data.bio,
-          repos: data.repos
+          bio,
+          repos
         })
       }.bind(this));
   }

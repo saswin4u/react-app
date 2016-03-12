@@ -24965,7 +24965,6 @@
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      //Will be called right after the component mounts the view
-
 	      this.init(this.props.params.username);
 	    }
 	  }, {
@@ -24988,10 +24987,13 @@
 	        state: 'notes'
 	      });
 
-	      (0, _helpers2.default)(username).then(function (data) {
+	      (0, _helpers2.default)(username).then(function (_ref) {
+	        var bio = _ref.bio;
+	        var repos = _ref.repos;
+
 	        this.setState({
-	          bio: data.bio,
-	          repos: data.repos
+	          bio: bio,
+	          repos: repos
 	        });
 	      }.bind(this));
 	    }

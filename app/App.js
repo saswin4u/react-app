@@ -8,4 +8,4 @@ ReactDOM.render(
     <Router>{routes}</Router>
   </Router>,
   document.getElementById('app')
-)
+);
